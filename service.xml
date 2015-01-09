@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services>
+	<oneOperation name="LoadConfigConfiguration" className="com.mud.config.LoadConfigConfiguration">
+		<param name="name1" value="value1"></param>
+		<param name="name2" value="value2"></param>
+	</oneOperation>
+
+	<!-- <dependedService name="UserService" className="com.mud.service.depended.UserService" monitor="true" period="10">
+		<param name="userName" value="784615815"></param>
+	</dependedService> -->
+
+	<task name="FlushAccessTokenTask" className="com.mud.task.FlushAccessTokenTask">
+		<param name="periodic" value="false"></param>
+		<param name="delay" value="1"></param>
+	</task>
+
+	<listener>
+		<listener-class>com.mud.listener.ResourceContextListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>com.xunlei.game.api.listener.TaskManagerListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>com.xunlei.game.api.listener.DependedServiceListener</listener-class>
+	</listener>
+
+	<service>
+		<service-name>echo</service-name>
+		<service-class>com.mud.service.Echo</service-class>
+		<service-path>/echo</service-path>
+		<order>1</order>
+	</service>
+	<service>
+		<service-name>WXReceiveService</service-name>
+		<service-class>com.mud.service.WXReceiveService</service-class>
+		<service-path>/wxre</service-path>
+		<order>1</order>
+	</service>
+</services>

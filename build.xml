@@ -1,0 +1,54 @@
+<project name="Mud" default="deploy" basedir=".">
+
+	<property name="src" location="src" />
+	<property name="dist" location="dist" />
+	<property name="deploy" location="deploy/Mud" />
+
+	<target name="init">
+		<delete dir="${dist}" />
+		<delete dir="${deploy}" />
+		<mkdir dir="${deploy}" />
+		<mkdir dir="${dist}" />
+		<mkdir dir="${dist}/classes" />
+	</target>
+
+	<target name="compile" depends="init" description="compile the source ">
+		<javac srcdir="${src}" destdir="${dist}/classes" debug="true"
+			encoding="utf-8" includeantruntime="on">
+			<compilerarg value="-Xlint:unchecked" />
+			<compilerarg value="-Xlint:deprecation" />
+			<classpath>
+				<fileset dir="lib">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="dist" depends="compile" description="generate the distribution">
+		<jar destfile="${dist}/mud.jar">
+			<fileset dir="${dist}/classes">
+				<include name="**/com/mud/**/*.class" />
+				<include name="**/com/qq/**/*.class" />
+				<include name="**/com/xunlei/**/*.class" />
+			</fileset>
+		</jar>
+		<delete dir="${dist}/classes" />
+	</target>
+
+	<target name="deploy" depends="dist">
+		<copy todir="${deploy}">
+			<fileset dir="">
+				<include name="service.xml"></include>
+			</fileset>
+		</copy>
+		<copy todir="${deploy}/lib">
+			<fileset dir="lib"></fileset>
+			<fileset dir="dist"></fileset>
+		</copy>
+		<copy todir="${deploy}/conf">
+			<fileset dir="conf"></fileset>
+		</copy>
+	</target>
+
+</project>

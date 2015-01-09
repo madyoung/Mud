@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+	<property name="log.base" value="log/" />
+
+	<appender name="default" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.base}localserver.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${log.base}localserver.%d{yyyy-MM-dd}.%i.log
+			</FileNamePattern>
+			<MaxHistory>60</MaxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>20MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%date %-5level - %msg%n</Pattern>
+		</layout>
+	</appender>
+
+	<appender name="server" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.base}server.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${log.base}server.%d{yyyy-MM-dd}.%i.log
+			</FileNamePattern>
+			<MaxHistory>60</MaxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>20MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%date %-5level - %msg%n</Pattern>
+		</layout>
+	</appender>
+
+	<appender name="email" class="ch.qos.logback.classic.net.SMTPAppender">
+		<SMTPHost>mail.cc.sandai.net</SMTPHost>
+		<SMTPPort>25</SMTPPort>
+		<To>chenzhiwei1@cc.sandai.net</To>
+		<From>monitor@cc.sandai.net</From>
+		<Subject>%X{subject}</Subject>
+		<SSL>false</SSL>
+		<Username>monitor@cc.sandai.net</Username>
+		<Password>121212</Password>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%date - %msg%n</Pattern>
+		</layout>
+	</appender>
+
+	<appender name="service" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.base}service.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${log.base}service.%d{yyyy-MM-dd}.%i.log
+			</FileNamePattern>
+			<MaxHistory>60</MaxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>20MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%date %-5level - %msg%n</Pattern>
+		</layout>
+	</appender>
+	
+	<appender name="player" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.base}player.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${log.base}player.%d{yyyy-MM-dd}.%i.log
+			</FileNamePattern>
+			<MaxHistory>60</MaxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>20MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%date %-5level - %msg%n</Pattern>
+		</layout>
+	</appender>
+	
+	<appender name="playercmd" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.base}playercmd.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${log.base}playercmd.%d{yyyy-MM-dd}.%i.log
+			</FileNamePattern>
+			<MaxHistory>60</MaxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>20MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%date %-5level - %msg%n</Pattern>
+		</layout>
+	</appender>
+
+	<appender name="db" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.base}db.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${log.base}db.%d{yyyy-MM-dd}.%i.log
+			</FileNamePattern>
+			<MaxHistory>60</MaxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>20MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%date %-5level - %msg%n</Pattern>
+		</layout>
+	</appender>
+
+	<appender name="idGen" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.base}long-log/idGen-log/idGen.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${log.base}long-log/idGen-log/idGen.%d{yyyy-MM-dd}.%i.log
+			</FileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>20MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%date %-5level - %msg%n</Pattern>
+		</layout>
+	</appender>
+	<appender name="wxserver" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.base}wxserver.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${log.base}wxserver.%d{yyyy-MM-dd}.%i.log
+			</FileNamePattern>
+			<MaxHistory>60</MaxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>20MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%date %-5level - %msg%n</Pattern>
+		</layout>
+	</appender>
+
+	<appender name="task" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.base}task.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${log.base}task.%d{yyyy-MM-dd}.%i.log
+			</FileNamePattern>
+			<MaxHistory>60</MaxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>20MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%date %-5level - %msg%n</Pattern>
+		</layout>
+	</appender>
+
+	<logger name="task" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="task" />
+	</logger>
+	<logger name="service" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="service" />
+	</logger>
+	<logger name="player" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="player" />
+	</logger>
+	<logger name="playercmd" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="playercmd" />
+	</logger>
+	<logger name="db" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="db" />
+	</logger>
+	<logger name="idGen" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="idGen" />
+	</logger>
+	<logger name="wxserver" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="wxserver" />
+	</logger>
+	<logger name="email" additivity="false">
+		<appender-ref ref="email" />
+	</logger>
+	<logger name="server" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="server" />
+	</logger>
+	<root level="INFO">
+		<appender-ref ref="default" />
+	</root>
+</configuration>
